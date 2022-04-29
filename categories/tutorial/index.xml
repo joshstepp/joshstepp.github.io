@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Tutorial on Josh Stepp</title>
+    <link>https://joshstepp.com/categories/tutorial/</link>
+    <description>Recent content in Tutorial on Josh Stepp</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>&amp;copy; 2016-2019. All rights reserved.</copyright>
+    <lastBuildDate>Thu, 24 Jan 2019 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://joshstepp.com/categories/tutorial/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Malicious Document Crash Course Part 2: Macros, APTs and OLE!</title>
+      <link>https://joshstepp.com/post/maliciousdoc_part2/</link>
+      <pubDate>Thu, 24 Jan 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://joshstepp.com/post/maliciousdoc_part2/</guid>
+      <description>In our last installment  of the Malicious Documents crash course we discussed the basics of Microsoft Office file formats, macros and used some open source tools to tear apart a random OOXML sample from the internet. By knowing the format and extracting the macros in a safe environment, we are able to see what type of actions this document is attempting to accomplish, and make a determination on how to triage this document.</description>
+    </item>
+    
+    <item>
+      <title>Malicious Document Crash Course Part 1: Microsoft Office Documents and Macros</title>
+      <link>https://joshstepp.com/post/maliciousdoc_part1/</link>
+      <pubDate>Sun, 30 Dec 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://joshstepp.com/post/maliciousdoc_part1/</guid>
+      <description>Malicious Microsoft Office files were extremely intimidating to me when I first got into information security because it seemed to always be the vector in which someone got pwned. Couple that with a ransomware sample getting loose on my homelab and “securing” a plugged in flash drive (nervous double mouse tap), I was traumatized.
+However, as I became more familiar with them, I have discovered they are actually easy to identify and can be fun to tear apart.</description>
+    </item>
+    
+  </channel>
+</rss>

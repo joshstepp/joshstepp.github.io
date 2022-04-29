@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en-us">
+    <head>
+         
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>ICS Primer</title>
+        
+        <style>
+
+    html body {
+        font-family: 'Source Code Pro', sans-serif;
+        background-color: white;
+    }
+
+    :root {
+        --accent: green;
+        --border-width:  5px ;
+    }
+
+</style>
+
+
+<link rel="stylesheet" href="https://joshstepp.com/css/main.css">
+
+
+
+
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source%20Code%20Pro">
+
+
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/solarized-dark.min.css"> 
+
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+ 
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+
+    
+
+    <script>hljs.initHighlightingOnLoad();</script>
+
+
+
+
+
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+
+<script>$(document).on('click', function() { $('.collapse').collapse('hide'); })</script>
+ <meta name="generator" content="Hugo 0.53" />
+        
+
+        
+        
+        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-89104888-1"></script>
+        <script>
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments)};
+          gtag('js', new Date());
+
+          gtag('config', 'UA-89104888-1');
+        </script>
+        
+    </head>
+
+    
+    
+    <script type="text/javascript" async
+      src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+    </script>
+    
+
+    <body>
+         
+        <nav class="navbar navbar-default navbar-fixed-top">
+
+            <div class="container">
+
+                <div class="navbar-header">
+
+                    <a class="navbar-brand visible-xs" href="#">ICS Primer</a>
+
+                    <button class="navbar-toggle" data-target=".navbar-collapse" data-toggle="collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+
+                </div>
+
+                <div class="collapse navbar-collapse">
+
+                    
+                        <ul class="nav navbar-nav">
+                            
+                                <li><a href="/about/">About</a></li>
+                            
+                                <li><a href="/now/">Now</a></li>
+                            
+                                <li><a href="/recommendedreading/">Books</a></li>
+                            
+                                <li><a href="/post/">Blog</a></li>
+                            
+                                <li><a href="/">Home</a></li>
+                            
+                        </ul>
+                    
+
+                    
+                        <ul class="nav navbar-nav navbar-right">
+                            
+                                <li class="navbar-icon"><a href="mailto:joshstepp5@gmail.com"><i class="fa fa-envelope-o"></i></a></li>
+                            
+                                <li class="navbar-icon"><a href="https://github.com/joshstepp/"><i class="fa fa-github"></i></a></li>
+                            
+                                <li class="navbar-icon"><a href="https://twitter.com/j0sh_stepp/"><i class="fa fa-twitter"></i></a></li>
+                            
+                                <li class="navbar-icon"><a href="https://www.linkedin.com/in/joshstepp404/"><i class="fa fa-linkedin"></i></a></li>
+                            
+                        </ul>
+                    
+
+                </div>
+
+            </div>
+
+        </nav>
+
+
+<main>
+
+    <div class="item">
+
+    
+    
+    
+
+    
+      
+
+    <h4><a href="/post/ics_primer/">ICS Primer</a></h4>
+    <h5>My attempt to give an executive view of the ICS environment</h5>
+    
+    <a href="https://joshstepp.com/tags/ics"><kbd class="item-tag">ICS</kbd></a>
+    
+    <a href="https://joshstepp.com/tags/infosec"><kbd class="item-tag">infosec</kbd></a>
+    
+    <a href="https://joshstepp.com/tags/thoughts"><kbd class="item-tag">thoughts</kbd></a>
+    
+
+</div>
+
+
+    <br> <div class="text-justify">
+
+<p>In a previous <a href="https://joshstepp.com/post/realcybernews/">post</a>, I discussed my viewpoints on the 2015 / 2016 attacks on the Ukrainian power grid. While I stand by my intent in that post, the attacks appear to be a proof of concept and that this is a serious turning point in ICS adversary capability, I did make some mistakes, out of ignorance that I would like to clear up.</p>
+
+<p>The mistake I made was asserting that those systems were very similar to one another, and that being able to pwn one meant you were able to pwn others. Even if an advanced threat actor has an exploit they are using on a specific piece of equipment,say a Master Terminal Unit (MTU), the surrounding equipment, coupled with mechanical safeguards can greatly reduce the likelihood of their attack succeeding. Basically, it takes a large amount of resources to properly recon an environment, weaponize and deliver an effective attack. That isn’t to say it is impossible, it is just harder than I made it sound in my previous post.</p>
+
+<p>With that being said, I want to repent my ICS sins and give a primer in a <a href="https://learnxinyminutes.com/">learnxinyminutes.com</a> style to hopefully get people new to the scene up to date. A caveat here, I am far from an expert in this field. I have some limited experience and find it intriguing.  If you are an expert and find something incorrect with my logic, please post a ticket on Github or let me know.</p>
+
+<p>So we will start with some ICS basics, then some of the common components of an ICS system, talk about Programmable Logic Controllers (PLCs), cover some of the more common ICS communication protocols and wrap things up with an overview of the known attacks/malware and some of the bigger name threat actors.</p>
+
+<h3 id="ics-basics">ICS Basics</h3>
+
+<p>ICS - Industrial Control Systems are made up of the personnel, hardware and software that influence the safe, secure and reliable operation of an industrial process. Essentially, it is the entire system that delivers the public good.</p>
+
+<p>CI - Critical Infrastructure is the term used to describe services needed for essential daily function within our society. People started to get really concerned about this in 1962 around the time of the Cuban Missile Crisis.</p>
+
+<p>PPD-21 - Presidential Policy Directive on Critical Infrastructure Security and Resilience established a policy to protect U.S. Critical infrastructure against both physical and cyber attacks.  It was signed in 2013 (Thanks Obama!) and you can read it <a href="https://fas.org/irp/offdocs/ppd/ppd-21.pdf">here</a></p>
+
+<p>NIPP - National Infrastructure Protection Plan defines the 16 sectors of critical infrastructure in PPD-21. They are:</p>
+
+<ol>
+<li>Chemical</li>
+<li>Commercial facilities</li>
+<li>Communications</li>
+<li>Critical manufacturing</li>
+<li>Dams</li>
+<li>Defense industrial base</li>
+<li>Emergency services</li>
+<li>Energy</li>
+<li>Financial services</li>
+<li>Food and agriculture</li>
+<li>Government facilities</li>
+<li>Healthcare and public health</li>
+<li>Information technology</li>
+<li>Nuclear reactors, materials, and waste</li>
+<li>Transportation systems</li>
+<li>Water and wastewater systems</li>
+</ol>
+
+<p><em>NOTE I am mostly familiar with Energy and Water sectors, so that will be the focus of this post.</em></p>
+
+<p>ICS-CERT -  stands for Industrial Control Systems Cyber Emergency Response Team and they are like the Avengers for ICS emergencies. The provide an incident response function and handle control system vulnerability coordination. They also have free training for security in ICS environments and you can take it  <a href="https://ics-cert.us-cert.gov/Training-Available-Through-ICS-CERT">here</a>. I have taken most of these courses and they are amazing.</p>
+
+<p>Energy Sector - Consist of natural gas, petroleum and electricity. It covers security for the entire process of generating the energy to delivery to the customer.  All the pipes, lines, compressors and infrastructure in-between.</p>
+
+<h3 id="components-of-an-ics-system">Components of an ICS system</h3>
+
+<p>Control System - Think INPUT -&gt; PROCESS -&gt; OUTPUT,repeatedly. A “sensor” observes a value (INPUT), a computer does a calculation (PROCESS) and as a result, a valve is closed (OUTPUT).</p>
+
+<h3 id="types-of-control-systems">Types of Control Systems</h3>
+
+<p>Process Control Systems (PCS) - Allows operators to make control decisions, thus allowing a small group to operate a large complex process.</p>
+
+<p>Distributed Control System (DCS) - a control architecture that contains a supervisory level to oversee multiple, integrate substations. Process oriented and state driven!.</p>
+
+<p>Building Management System (BMS) - these are sometimes called Building Automation Systems (BAS) and often control the HVAC for a building, group of of buildings or an entire campus. These can get advanced in some cases, shutting off ventilation when smoke is detected, to turning off lights when people aren&rsquo;t detected.</p>
+
+<p>Energy Management Systems (EMS) -  computer-aided tools that allow operators to monitor and control performance of an electric grid. More often than not, I have seen these just being group in with “SCADA”.</p>
+
+<p>Supervisory Control and Data Acquisition System (SCADA) - this is usually what people call every ICS network, an ICS/SCADA network. But  now you can be the 1337 h4x0r at your next  meetup and correct everyone (P.S.A. don’t be that person). Anyway, these incorporate data acquisition and data transmission to control geographically separated assets via an human machine interface (HMI).</p>
+
+<p>SCADA systems are made up of seven core components and they are:</p>
+
+<p>Control Server - Host the the PLC supervisory control software and collects data from the multiple Master Terminal Units (MTUs). Remember, SCADA is like Jonah Hill from Moneyball, data-driven!</p>
+
+<p>Master Terminal Unit (MTU) - sometimes referred to as a SCADA server, is the “Master” in this system and issues commands to the slave components, like RTUs and/or PLCs.</p>
+
+<p>Remote Terminal Unit (RTU) - is a field device that is often equipped with some type of wireless communication radio because a wired solution wouldn’t work, it’s really far away. Sometimes, these are integrated with Programmable Logic Controllers (PLCs) in one unit, sometimes they aren’t. It depends on the system you are at, the vendor used and the age of the components.</p>
+
+<p>Intelligent Electronic Device (IED) - not the bad kind of IED, but a smart sensor that allows automatic control of an output. These are usually synonyms of RTUs with PLCs integrated in my experience.</p>
+
+<p>Programmable Logic Controller (PLCs) - These are the workers of the system, and are field devices that do the “action”.  They store their operating procedures and data in their memory and transfer data once prompted by the MTU.  More on these pieces in a bit!</p>
+
+<p>Human Machine Interface (HMI) - this is the software or hardware  that allows the operators to monitor, modify and change configurations. It also allows the operator to issue manual overrides in the event of an emergency.  From personal experience, this can be dedicated server to a program on a computer. Most of the time, these are computers that are accessed through remote desktop sessions.</p>
+
+<p>Data Historian - store logs and can be accessed for planning and statistical analysis.</p>
+
+<p>Input/Output server (I/O server) - collects, buffers and provides access to process information for the sub-components (PLCs, RTUs, IEDs).</p>
+
+<h3 id="programmable-logic-controllers-plcs">Programmable Logic Controllers (PLCs)</h3>
+
+<p>Programmable Logic Controls (PLCs) consist of the CPU, input assembly, output assembly, power supply, rack and programming device.  The CPU often varies from model to model and memory size is extremely important. The input assembly is like the ears and eyes of the system and observes conditions. The output assembly allows the PLC to physically make a change. The power supply supplies power to the device, usually at 24 VDC or 120 VAC. The rack assembly is the location in which all the PLCs are stored. The programming device is usually just a PC with specific software, but some older systems can use custom hardware.</p>
+
+<p>Programming Device - usually the PLC is powered down and a new logic program is loaded while the system is switched into a “program” or “debug” mode, then powered on. Then the PLC is switched back to “run” and it cycles through the process until it is programmed otherwise. Refer to the manufacturer&rsquo;s instructions on this one!</p>
+
+<p>PLC Programming Languages - International Electrotechnical Commission (IEC) 61131 deals with the programming languages of PLCs and currently allows the use of five languages.</p>
+
+<p><a href="https://en.wikipedia.org/wiki/Functional_block_diagram">Function Block Diagram (FBD)</a> - graphical language for PLCs that describe the function between the input and output variable</p>
+
+<p><a href="https://en.wikipedia.org/wiki/Structured_text"> Structured Text (ST)</a> - high level language the resembles  <a href="https://en.wikipedia.org/wiki/Pascal_(programming_language)">PASCAL</a>. Usually this is used for standalone devices.</p>
+
+<p><a href="https://en.wikipedia.org/wiki/Instruction_list">Instruction List (IL) </a> - low level language that looks similar to assembly. The file format is XML.</p>
+
+<p><a href="https://en.wikipedia.org/wiki/Sequential_function_chart">Sequential Function Chart (SFC)</a> - graphical language that often is made up of custom naming structures. Based on GRAFCET.</p>
+
+<p><a href="https://en.wikipedia.org/wiki/Ladder_logic">Ladder Logic (LL) </a> - the most common and is rule based rather than procedural like the others. Each “rung” is consider a “rule”.</p>
+
+<h3 id="ics-communication-protocols">ICS Communication Protocols</h3>
+
+<p>ICS protocols, in general, can be a mess because some manufacturers have developed their own protocols and when doing any kind of security events or monitoring, it is best to do so in a passive fashion. Running an nMap script on a production network is never a good idea. On the other hand, knowing what is on the network and the assets that should be present (asset discovery) is a critical step in ICS security.</p>
+
+<p>Generally speaking, ICS systems communicate on either Modbus, OPC or DNP3 protocols. Let’s look at each one briefly.</p>
+
+<p>Modbus - created in the 1960’s is a royalty free protocol that doesn’t have any security built into it. It is an application layer protocol and is based on a client/server communication model. Modbus default port is TCP 502. The frames that Modbus uses can vary depending on configuration. There are Modus ASCII frames, RTU frames and TCP frames. The biggest difference is that the ASCII frames are more susceptible to malformed frames, and that the TCP frames include a device identifier.   You can read more <a href="http://www.modbus.org/faq.php">here</a>.</p>
+
+<p>After 2011 - Open Platform Communications (OPC) - series of standards for ICS telecommunication. See Below for more details, despite the name change, for our purposes, it does the same thing.</p>
+
+<p>OLE for Process Control (OPC) - Yes that OLE stands for Object Linking and Embedding (like Microsoft Documents) and it is Microsoft’s answer to  ICS protocols. OPC acts as a translator or a bridge for apps to communicate with devices without the needed for specific drivers. OPC’s abstraction is done using an OPC client and server, and usually only allows communication between the OPC devices. This is usually a common sight within modern ICS networks. You can read more <a href="https://en.wikipedia.org/wiki/Open_Platform_Communications">here</a>.</p>
+
+<p>Distributed Network Protocol (DNP3) - an ICS protocol built with security in mind. It uses encryption and is the most common in the U.S. as far as my observations are concerned. DNP3 usually goes over TCP port 2000 but some vendors have been known to change their DNP3 ports. More DNP3 information can be found <a href="https://www.dnp.org/Pages/AboutDefault.aspx">here</a>.</p>
+
+<h3 id="ics-malware">ICS Malware</h3>
+
+<p>As more of the modern world comes to rely on computer controlled software and hardware to execute processes necessary for society to function, more threat vectors and attack surface has emerged. Naturally, it was only a matter of time until a sophisticated threat actor crafted malicious binaries targeting critical infrastructure.</p>
+
+<p>At the dated of this post, there are five known ICS specific malware attacks.</p>
+
+<p>STUXNET - if you haven’t heard about Stuxnet, just Youtube it and get some popcorn. This is without a doubt the most referenced ICS malware example and has been the point of case studies for everyone studying cyber security.  STUXNET was one of three current pieces of malware designed to disrupt operations. While the malware leveraged four Windows zero-day exploits to do it’s work, the best part, in my opinion, was the payload for the Siemens equipment.  Stuxnet is also a great example of why exploits can’t be repurposed as easy in this domain. While STUXNET was highly effective in Iran at the Natanz facility, it is tailored to that specific piece of equipment, in the environment. The likelihood of finding the same exact configuration is low, so therefore the target must be worth the considerable resources.</p>
+
+<p>HAVEX - Havex is the name of the malware used in the Dragonfly espionage campaign that targeted an insane amount of sites (2000+).  Havex targeted one of the only common denominators within ICS environments, the use of OPC. As you remember from above, the OPC protocol is a Windows based system in which it acts as a translation layer between the operator and the end-device.  Unlike STUXNET, Havex was focused on reconnaissance of the ICS environment, not disruption.</p>
+
+<p>BLACKENERGY 2 - Believed to be built by the Sandworm team (more on them in a bit) was a revamped version of an old classic, Blackenergy, with some added ICS specific features to target internet connected HMIs.  Like Havex, this attack was more for fact finding and not disruption of service.</p>
+
+<p>BLACKENERGY 3 - Also believed to be the Sandworm Team, is the name of the malware that was used to disrupt power during the December 2015 attack on the Ukrainian grid. Unlike Blackenergy 2, and the rest of the malware in this section, Blackenergy 3 has no ICS specific components. It was used to gain entry into the power plant’s network and then the actors pivoted to the SCADA side of the network. Once they got their foothold, they proceeded to live off the land and disconnect substations, thus cutting the power to 200,000+ Ukrainians in the middle of winter. The attack also leverage wiper malware and malicious firmware updates to destroy more equipment and seriously cripple the SCADA environment.</p>
+
+<p>CRASHOVERIDE / INDUSTROYER - infected a substation in Ukraine almost exactly a year after the December 2015 attacks of Blackenergy 3. The general consensus is that this attack was more of a proof of concept than an actual attack.  Like Stuxnet, this malware also targeted disruption of service. Crashoverride/Industroyer  used the OPC protocol to map its environment, just like Havex did. This malware has two names, Industroyer was the name given to it by ESET, and Dragos gave it the name Crashoveride because it left a crash.dll and it&rsquo;s a much cooler name.</p>
+
+<p>TRISIS / TRITON -  is the latest disruptive ICS malware example that targeted equipment in the Middle East. The malware targeted the Schneider Electric’s Triconex safety instrumented system, thus giving it the name TRISIS. The name TRITON comes from the FireEye report about the same malware. I highly suggest reading both the <a href="https://dragos.com/wp-content/uploads/TRISIS-01.pdf">Dragos report</a>  and <a href="https://www.fireeye.com/blog/threat-research/2017/12/attackers-deploy-new-ics-attack-framework-triton.html">FireEye report</a>  for this sample. This is the first known example that targets the safety system, however it still must overcome the mechanical safeguards and other forms of safety measures to disrupt the plant. Lastly, this attack leveraged a flaw in process due to the Controller being left in the “program mode”, allowing configuration changes. If this device was in the proper “run” setting, many believe this attack would have resulted in a big nothing-burger.</p>
+
+<h3 id="ics-threat-actors">ICS Threat Actors</h3>
+
+<p>First of all, the <a href="https://dragos.com/adversaries/">Dragos</a> page with reports to all the current actors they are tracking is great. FireEye also has great reporting in this arena. For the sake of brevity and not reinventing the wheel, I will only discuss the two most “advanced” groups and linked other great resources.</p>
+
+<p>Xenotime / TEMP.Veles - Believed to be Russian based and according to FireEye, likely backed by a Russian Research Institute. This group is attributed to TRISIS/TRITON intrusion.</p>
+
+<p><a href="https://www.fireeye.com/blog/threat-research/2018/10/triton-attribution-russian-government-owned-lab-most-likely-built-tools.html">More info here</a></p>
+
+<p>Electrum / Sandworm / VOODOO Bear / Quedagh - Believed to be Russian as well and made up of pro-Russian hacktivists. This group is attributed to BLACKENERGY 2, BLACKENERGY 3 and CRASHOVERRIDE/INDUSTROYER attacks.</p>
+
+<p><a href="https://attack.mitre.org/groups/G0034/">More info here</a></p>
+
+<p>That&rsquo;s all for now!</p>
+
+<p>Josh Stepp</p>
+</div>
+
+    
+    
+
+    
+
+        <h4 class="page-header">Related</h4>
+
+         <div class="item">
+
+    
+    
+    
+
+    
+      
+
+    <h4><a href="/post/maliciousdoc_part2/">Malicious Document Crash Course Part 2: Macros, APTs and OLE!</a></h4>
+    <h5>Dumping and Understanding Macros from an APT OLE2 Document</h5>
+    
+    <a href="https://joshstepp.com/tags/tutorial"><kbd class="item-tag">tutorial</kbd></a>
+    
+    <a href="https://joshstepp.com/tags/infosec"><kbd class="item-tag">infosec</kbd></a>
+    
+    <a href="https://joshstepp.com/tags/malware-analysis"><kbd class="item-tag">malware analysis</kbd></a>
+    
+
+</div>
+  <div class="item">
+
+    
+    
+    
+
+    
+      
+
+    <h4><a href="/post/2019reresources/">Reverse Engineering Resources for 2019</a></h4>
+    <h5>Some RE resources for beginners</h5>
+    
+    <a href="https://joshstepp.com/tags/malware-analysis"><kbd class="item-tag">malware analysis</kbd></a>
+    
+    <a href="https://joshstepp.com/tags/infosec"><kbd class="item-tag">infosec</kbd></a>
+    
+    <a href="https://joshstepp.com/tags/thoughts"><kbd class="item-tag">thoughts</kbd></a>
+    
+
+</div>
+  <div class="item">
+
+    
+    
+    
+
+    
+      
+
+    <h4><a href="/post/maliciousdoc_part1/">Malicious Document Crash Course Part 1: Microsoft Office Documents and Macros</a></h4>
+    <h5>A triaging method for dealing with Microsoft Documents with macros</h5>
+    
+    <a href="https://joshstepp.com/tags/tutorial"><kbd class="item-tag">tutorial</kbd></a>
+    
+    <a href="https://joshstepp.com/tags/infosec"><kbd class="item-tag">infosec</kbd></a>
+    
+    <a href="https://joshstepp.com/tags/malware-analysis"><kbd class="item-tag">malware analysis</kbd></a>
+    
+
+</div>
+ 
+
+    
+
+    
+
+</main>
+
+        <footer>
+
+            <p class="copyright text-muted">&copy; All rights reserved. Powered by <a href="https://gohugo.io">Hugo</a> and <a href="https://github.com/calintat/minimal">Minimal</a></p>
+
+        </footer>
+       
+    </body>
+
+</html>
+

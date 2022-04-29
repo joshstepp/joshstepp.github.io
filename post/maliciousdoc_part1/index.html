@@ -153,11 +153,11 @@
     <h4><a href="/post/maliciousdoc_part1/">Malicious Document Crash Course Part 1: Microsoft Office Documents and Macros</a></h4>
     <h5>A triaging method for dealing with Microsoft Documents with macros</h5>
     
-    <a href="https://joshstepp.com/tags/training"><kbd class="item-tag">training</kbd></a>
+    <a href="https://joshstepp.com/tags/tutorial"><kbd class="item-tag">tutorial</kbd></a>
     
     <a href="https://joshstepp.com/tags/infosec"><kbd class="item-tag">infosec</kbd></a>
     
-    <a href="https://joshstepp.com/tags/malicious-documents"><kbd class="item-tag">malicious documents</kbd></a>
+    <a href="https://joshstepp.com/tags/malware-analysis"><kbd class="item-tag">malware analysis</kbd></a>
     
 
 </div>
@@ -171,7 +171,7 @@
 
 <p>So the point of this is to help you triage documents, not to do an in-depth analysis and focus on macros. Deeper, more technical posts will be in the future.</p>
 
-<h2 id="a-brief-introduction-to-microsoft-office-file-formats">A Brief Introduction to Microsoft Office File Formats</h2>
+<h3 id="a-brief-introduction-to-microsoft-office-file-formats">A Brief Introduction to Microsoft Office File Formats</h3>
 
 <p>Despite the numerous extensions an office file can have, the biggest difference for our purposes is whether it has a three letter extension or a four letter extension (Spoiler Alert: it’s not a big deal with the tools we are using).</p>
 
@@ -181,19 +181,19 @@
 
 <p>If you would like to read more about file formats for Microsoft Office, this Microsoft <a href="https://docs.microsoft.com/en-us/deployoffice/compat/office-file-format-reference"> documentation </a>  has you covered</p>
 
-<h2 id="tools">Tools</h2>
+<h3 id="tools">Tools</h3>
 
 <p>Technically speaking, you can use a Microsoft OS with office installed to examine the samples for malicious macros. However, I consider that to be akin to cleaning a loaded weapon, there is just better ways to do things. My weapon of choice is the <a href="https://remnux.org/"> Remnux </a> virtual machine. It’s based on Ubuntu and is pre-loaded with all my favorite tools, plus it’s free. Just follow the docs and install it in your favorite virtual machine solution. Take a snapshot once you have it installed, that way you can revert before looking at a fresh sample.</p>
 
-<h2 id="analysis">Analysis</h2>
-
-<h3 id="caution-all-though-we-aren-t-executing-any-macros-or-opening-any-documents-in-a-windows-environment-i-am-not-responsible-for-any-damage-you-may-do-to-your-computer-this-is-for-educational-purposes-only">CAUTION: All though we aren’t executing any macros or opening any documents in a Windows environment, I am not responsible for any damage you may do to your computer. This is for educational purposes only.</h3>
+<h3 id="sample">Sample</h3>
 
 <p>Sample 1: 8b5c80771e73a21b71c1d6bce8fe32c1_MACRO_testing_INNOTEC.docm</p>
 
 <p><a href="https://cape.contextis.com/analysis/20715/">Download here </a></p>
 
-<p>This is a sample I got for this post and appears to be submitted as a test for macros. Sometimes you can get lucky with these.</p>
+<h3 id="analysis">Analysis</h3>
+
+<p><strong>CAUTION: All though we aren’t executing any macros or opening any documents in a Windows environment, I am not responsible for any damage you may do to your computer. This is for educational purposes only.</strong></p>
 
 <p>First, since its a .docm, that indicated it has macros, so lets unzip it to see what we are working with.</p>
 
@@ -262,50 +262,54 @@
     
       
 
+    <h4><a href="/post/ics_primer/">ICS Primer</a></h4>
+    <h5>My attempt to give an executive view of the ICS environment</h5>
+    
+    <a href="https://joshstepp.com/tags/ics"><kbd class="item-tag">ICS</kbd></a>
+    
+    <a href="https://joshstepp.com/tags/infosec"><kbd class="item-tag">infosec</kbd></a>
+    
+    <a href="https://joshstepp.com/tags/thoughts"><kbd class="item-tag">thoughts</kbd></a>
+    
+
+</div>
+  <div class="item">
+
+    
+    
+    
+
+    
+      
+
+    <h4><a href="/post/maliciousdoc_part2/">Malicious Document Crash Course Part 2: Macros, APTs and OLE!</a></h4>
+    <h5>Dumping and Understanding Macros from an APT OLE2 Document</h5>
+    
+    <a href="https://joshstepp.com/tags/tutorial"><kbd class="item-tag">tutorial</kbd></a>
+    
+    <a href="https://joshstepp.com/tags/infosec"><kbd class="item-tag">infosec</kbd></a>
+    
+    <a href="https://joshstepp.com/tags/malware-analysis"><kbd class="item-tag">malware analysis</kbd></a>
+    
+
+</div>
+  <div class="item">
+
+    
+    
+    
+
+    
+      
+
     <h4><a href="/post/2019reresources/">Reverse Engineering Resources for 2019</a></h4>
     <h5>Some RE resources for beginners</h5>
     
-    <a href="https://joshstepp.com/tags/reverse-engineering"><kbd class="item-tag">reverse engineering</kbd></a>
+    <a href="https://joshstepp.com/tags/malware-analysis"><kbd class="item-tag">malware analysis</kbd></a>
     
     <a href="https://joshstepp.com/tags/infosec"><kbd class="item-tag">infosec</kbd></a>
-    
-    <a href="https://joshstepp.com/tags/training"><kbd class="item-tag">training</kbd></a>
-    
-
-</div>
-  <div class="item">
-
-    
-    
-    
-
-    
-      
-
-    <h4><a href="/post/wgumscsia/">Western Governors University: Master of Science Cybersecurity and Information Assurance (MSCSIA) - My Review</a></h4>
-    <h5>My thoughts on the WGU MSCSIA program</h5>
     
     <a href="https://joshstepp.com/tags/thoughts"><kbd class="item-tag">thoughts</kbd></a>
-    
-    <a href="https://joshstepp.com/tags/infosec"><kbd class="item-tag">infosec</kbd></a>
-    
-
-</div>
-  <div class="item">
-
-    
-    
-    
-
-    
-      
-
-    <h4><a href="/post/homelabpt2/">Home Lab Part II : My Setup</a></h4>
-    <h5>A breakdown of my work horse and why it is built this way</h5>
-    
-    <a href="https://joshstepp.com/tags/thoughts"><kbd class="item-tag">thoughts</kbd></a>
-    
-    <a href="https://joshstepp.com/tags/infosec"><kbd class="item-tag">infosec</kbd></a>
     
 
 </div>
