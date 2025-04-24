@@ -1,0 +1,252 @@
+/* Basic Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    /* White background */
+    background-color: #ffffff; /* White background */
+    color: #1a1a1a; /* Dark grey/near black text for contrast */
+    /* Technical/Monospace Font */
+    font-family: 'Roboto Mono', 'Courier New', monospace; /* Using Google Font Roboto Mono */
+    line-height: 1.6; /* Standard line height */
+    padding-top: 20px; /* Add some padding at the top */
+    padding-bottom: 40px; /* Add padding at the bottom */
+    overflow-x: hidden; /* Prevent horizontal scroll */
+}
+
+/* Import Google Font */
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400..700&display=swap');
+
+
+.container {
+    width: 95%;
+    max-width: 960px; /* Adjusted max width */
+    margin: 20px auto; /* Add margin top and bottom */
+    overflow: hidden;
+    padding: 0 20px; /* Adjusted padding */
+    /* Remove previous styling */
+    border: none;
+    box-shadow: none;
+    background-color: transparent;
+}
+
+header {
+    /* Black Header */
+    background-color: #000000; /* Black background */
+    /* Removed Pong background image and settings */
+    background-image: none;
+    background-size: auto;
+    background-position: initial;
+    background-repeat: initial;
+
+    color: #ffffff; /* White text for contrast on black background */
+    padding: 20px 0;
+    text-align: center;
+    position: static; /* Remove fixed positioning */
+    width: auto;
+    top: auto;
+    left: auto;
+    z-index: auto;
+    border-bottom: none; /* Remove border */
+    box-shadow: none; /* Remove shadow */
+    margin-bottom: 40px; /* Space after header */
+}
+
+header h1 {
+    margin: 0;
+    font-size: 2.5em; /* Adjusted font size */
+    font-weight: 700; /* Bolder */
+    color: #ffffff; /* White color for name for contrast */
+    text-shadow: none; /* Remove text glow */
+}
+
+header p {
+    margin-top: 5px;
+    font-size: 0.9em; /* Smaller tagline */
+    color: #cccccc; /* Light grey color for tagline */
+    opacity: 1;
+}
+
+section {
+    padding: 25px; /* Padding inside each section */
+    border-bottom: none; /* Remove section border */
+    background-color: #f0f0f0; /* Light grey background for sections */
+    margin-bottom: 25px; /* Space between sections */
+    border-radius: 0; /* Remove rounded corners */
+    box-shadow: none; /* Remove shadows */
+    border: 1px solid #cccccc; /* Light grey border */
+    transition: none; /* Remove transition effects */
+}
+
+section:hover {
+    transform: none; /* Remove transform on hover */
+    box-shadow: none; /* Remove shadow on hover */
+}
+
+section:last-child {
+    margin-bottom: 0;
+}
+
+/* Specific styling for the About Me section */
+#about-me {
+    background-color: #e9e9e9; /* Slightly different light grey for about me */
+    border-color: #bbbbbb; /* Slightly lighter border color */
+    box-shadow: none;
+    padding: 30px; /* Adjusted padding */
+    margin-bottom: 30px; /* Adjusted space below */
+    text-align: center; /* Center content in about me */
+}
+
+#about-me .container {
+     display: flex;
+     flex-direction: column; /* Stack items vertically */
+     align-items: center; /* Center items horizontally */
+     gap: 20px;
+     padding: 0; /* Remove container padding inside about-me */
+     margin: auto; /* Center the inner container */
+     max-width: 700px; /* Limit width for readability */
+}
+
+
+.profile-img {
+    width: 140px; /* Adjusted image size */
+    height: 140px;
+    border-radius: 0; /* Remove roundness */
+    object-fit: cover;
+    border: 2px solid #1a1a1a; /* Dark border */
+    box-shadow: none; /* Remove shadow */
+    filter: grayscale(100%) contrast(120%); /* Grayscale and increased contrast */
+    image-rendering: auto; /* Reset image rendering */
+}
+
+#about-me .description {
+    flex: none; /* Don't let description flex */
+    min-width: auto; /* Remove min-width */
+    text-align: center; /* Center text */
+}
+
+#about-me .description h2 {
+    text-align: center; /* Center heading */
+    font-size: 1.8em; /* Adjusted heading size */
+    margin-bottom: 10px;
+    border-bottom: none; /* Remove border */
+    padding-bottom: 0;
+    color: #1a1a1a; /* Dark color */
+}
+
+h2 {
+    color: #1a1a1a; /* Dark headings */
+    text-align: center;
+    margin-bottom: 15px; /* Adjusted margin */
+    font-size: 1.6em; /* Adjusted heading size */
+    border-bottom: 1px solid #cccccc; /* Subtle bottom border */
+    padding-bottom: 8px;
+    display: block;
+    width: 100%;
+    text-shadow: none; /* Remove text glow */
+}
+
+ul {
+    list-style: none; /* Remove default bullets */
+    padding-left: 0;
+    margin-top: 10px; /* Space above lists */
+}
+
+ul li {
+    margin-bottom: 8px; /* Space between list items */
+    position: relative;
+    padding-left: 0; /* Remove padding for custom bullet */
+    text-align: left; /* Align list items left */
+}
+
+ul li::before {
+    content: "> "; /* Add a terminal-like prefix */
+    color: #1a1a1a; /* Dark prefix color */
+}
+
+ul li a {
+    color: #333333; /* Dark grey links */
+    text-decoration: none;
+    transition: color 0.2s ease;
+    font-weight: 400; /* Normal weight */
+}
+
+ul li a:hover {
+    color: #1a1a1a; /* Darker on hover */
+    text-decoration: underline;
+}
+
+
+.social-links {
+    text-align: center;
+    margin-top: 20px; /* Adjusted margin */
+}
+
+.social-links li {
+    display: inline-block;
+    margin: 0 12px; /* Adjusted space between links */
+}
+
+.social-links li a {
+    font-size: 1.5em; /* Adjusted size */
+    color: #1a1a1a; /* Dark color for icons */
+    transition: color 0.3s ease;
+    text-shadow: none; /* Remove glow effect */
+}
+
+.social-links li a:hover {
+    color: #333333; /* Slightly lighter on hover */
+    text-shadow: none;
+}
+
+
+footer {
+    background: transparent; /* Transparent footer */
+    color: #555555; /* Muted grey text color */
+    text-align: center;
+    padding: 20px 0;
+    margin-top: 30px;
+    font-size: 0.8em;
+    border-top: 1px solid #cccccc; /* Subtle top border */
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .container {
+        width: 98%;
+        padding: 0 10px;
+    }
+
+    header h1 {
+        font-size: 2em;
+    }
+
+    #about-me {
+        padding: 20px;
+    }
+
+    #about-me .description h2 {
+        font-size: 1.6em;
+    }
+
+    .profile-img {
+        width: 100px;
+        height: 100px;
+    }
+
+    h2 {
+        font-size: 1.4em;
+    }
+
+    section {
+        padding: 15px;
+        margin-bottom: 20px;
+    }
+
+    .social-links li {
+        margin: 0 8px;
+    }
+}
