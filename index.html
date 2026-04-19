@@ -4,96 +4,456 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Josh Stepp</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --black: #000000;
+            --text: #1a1a1a;
+            --text-muted: #555555;
+            --border: #cccccc;
+            --bg: #ffffff;
+            --bg-section: #f0f0f0;
+            --bg-section-alt: #e9e9e9;
+            --accent-green: #4ade80;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background: var(--bg);
+            color: var(--text);
+            font-family: 'Roboto Mono', 'Courier New', monospace;
+            line-height: 1.65;
+            -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 860px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* ============ HEADER ============ */
+        header {
+            background: var(--black);
+            color: #ffffff;
+            padding: 5rem 0 4rem;
+            margin-bottom: 3rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        header::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background-image:
+                linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+            background-size: 32px 32px;
+            pointer-events: none;
+        }
+
+        header .container {
+            position: relative;
+            z-index: 1;
+        }
+
+        .header-tag {
+            display: inline-block;
+            font-size: 0.75rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: #888;
+            margin-bottom: 1.25rem;
+            padding: 0.35rem 0.75rem;
+            border: 1px solid #333;
+            border-radius: 4px;
+        }
+
+        .header-tag::before {
+            content: "● ";
+            color: var(--accent-green);
+            margin-right: 2px;
+        }
+
+        header h1 {
+            font-size: clamp(2.25rem, 6vw, 3.75rem);
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            line-height: 1.05;
+            color: #fff;
+            margin-bottom: 0.75rem;
+        }
+
+        header p.tagline {
+            font-size: 1rem;
+            color: #cccccc;
+            font-weight: 400;
+        }
+
+        header .prompt {
+            color: var(--accent-green);
+            margin-right: 0.5rem;
+        }
+
+        /* ============ SECTIONS ============ */
+        section {
+            background: var(--bg-section);
+            border: 1px solid var(--border);
+            padding: 2.5rem 2rem;
+            margin-bottom: 1.5rem;
+            transition: border-color 0.2s ease;
+        }
+
+        section:hover {
+            border-color: #999;
+        }
+
+        section .container {
+            padding: 0;
+        }
+
+        h2 {
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            color: var(--text-muted);
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        h2::before {
+            content: "//";
+            color: var(--text);
+            font-weight: 700;
+        }
+
+        h3 {
+            font-size: 1.35rem;
+            font-weight: 600;
+            letter-spacing: -0.01em;
+            margin-bottom: 1rem;
+            color: var(--text);
+            line-height: 1.35;
+        }
+
+        p {
+            color: var(--text);
+            margin-bottom: 1rem;
+            font-size: 0.95rem;
+        }
+
+        p:last-child {
+            margin-bottom: 0;
+        }
+
+        /* ============ ABOUT SECTION ============ */
+        #about-me {
+            background: var(--bg-section-alt);
+            border-color: #bbb;
+            padding: 3rem 2rem;
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 140px 1fr;
+            gap: 2rem;
+            align-items: start;
+        }
+
+        .profile-img {
+            width: 140px;
+            height: 140px;
+            object-fit: cover;
+            border: 2px solid var(--text);
+            filter: grayscale(100%) contrast(120%);
+            display: block;
+        }
+
+        .description h3 {
+            margin-top: 0.25rem;
+        }
+
+        /* ============ LINKS ============ */
+        a {
+            color: var(--text);
+            text-decoration: none;
+            transition: color 0.15s ease;
+        }
+
+        p a {
+            border-bottom: 1px solid var(--text);
+            padding-bottom: 1px;
+        }
+
+        p a:hover {
+            color: var(--text-muted);
+            border-bottom-color: var(--text-muted);
+        }
+
+        /* ============ LINK LISTS (buttons) ============ */
+        .link-list {
+            list-style: none;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 1.5rem;
+            padding: 0;
+        }
+
+        .link-list li {
+            margin: 0;
+            padding: 0;
+        }
+
+        .link-list li::before {
+            content: none;
+        }
+
+        .link-list a {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            padding: 0.55rem 1rem;
+            background: var(--bg);
+            border: 1px solid var(--border);
+            font-size: 0.85rem;
+            color: var(--text);
+            font-weight: 500;
+            transition: all 0.15s ease;
+        }
+
+        .link-list a::before {
+            content: ">";
+            color: var(--text-muted);
+            font-weight: 700;
+        }
+
+        .link-list a:hover {
+            background: var(--text);
+            color: var(--bg);
+            border-color: var(--text);
+        }
+
+        .link-list a:hover::before {
+            color: var(--accent-green);
+        }
+
+        /* ============ SOCIAL LINKS ============ */
+        .social-links {
+            list-style: none;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 1.25rem;
+            padding: 0;
+        }
+
+        .social-links li {
+            margin: 0;
+            padding: 0;
+        }
+
+        .social-links li::before {
+            content: none;
+        }
+
+        .social-links li a {
+            display: inline-block;
+            padding: 0.55rem 1.1rem;
+            background: var(--bg);
+            border: 1px solid var(--border);
+            font-size: 0.85rem;
+            color: var(--text);
+            font-weight: 500;
+            transition: all 0.15s ease;
+        }
+
+        .social-links li a:hover {
+            background: var(--text);
+            color: var(--bg);
+            border-color: var(--text);
+        }
+
+        /* ============ NOW SECTION ============ */
+        .now-meta {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: var(--text-muted);
+            margin-bottom: 1rem;
+        }
+
+        .now-meta::before {
+            content: "● ";
+            color: var(--accent-green);
+        }
+
+        .now-list {
+            list-style: none;
+            padding: 0;
+            margin-top: 1.25rem;
+            border-left: 2px solid var(--border);
+        }
+
+        .now-list li {
+            position: relative;
+            padding: 0.35rem 0 0.35rem 1.25rem;
+            font-size: 0.95rem;
+            color: var(--text);
+        }
+
+        .now-list li::before {
+            content: ">";
+            position: absolute;
+            left: 0.5rem;
+            color: var(--text-muted);
+            font-weight: 700;
+        }
+
+        /* ============ FOOTER ============ */
+        footer {
+            text-align: center;
+            padding: 2.5rem 0 1.5rem;
+            color: var(--text-muted);
+            font-size: 0.8rem;
+            border-top: 1px solid var(--border);
+            margin-top: 2rem;
+        }
+
+        /* ============ RESPONSIVE ============ */
+        @media (max-width: 720px) {
+            header {
+                padding: 3.5rem 0 3rem;
+                margin-bottom: 2rem;
+            }
+
+            .container {
+                padding: 0 16px;
+            }
+
+            section {
+                padding: 2rem 1.25rem;
+            }
+
+            #about-me {
+                padding: 2rem 1.25rem;
+            }
+
+            .about-grid {
+                grid-template-columns: 1fr;
+                gap: 1.25rem;
+            }
+
+            .profile-img {
+                width: 110px;
+                height: 110px;
+            }
+        }
+    </style>
 </head>
 <body>
 
     <header>
         <div class="container">
-            <h1>JOSH STEPP</h1>
-            <p>The Best Page on the Internet</p>
+            <span class="header-tag">Blue Teamer &middot; Builder &middot; Father</span>
+            <h1><span class="prompt">></span>Josh Stepp</h1>
+            <p class="tagline">Probably the best page on the internet.</p>
         </div>
     </header>
 
-    <section id="about-me">
-        <div class="container">
-            <h2>About Me</h2>
-            <img src="https://avatars.githubusercontent.com/u/12271211?s=400&u=1271da16b110bcf7b4ecaeba66fc5ae91a38942f&v=4" alt="Josh Stepp Photo" class="profile-img">
-            <div class="description">
-                 <p>
-            <h3> I’m a blue-teamer at heart who likes to build things </h3>
-                   
-                  <p>
-  
-              <b>Here’s a longer, more official-sounding version:</b> <p>
+    <div class="container">
 
-Josh Stepp is a cybersecurity professional with over a decade of experience in threat hunting, detection engineering, and system architecture. A proud veteran of the United States Air Force, where he had the opportunity to serve his nation as a Cyberwarfare Operator. As the creator of the IntrusionsInDepth Podcast, Josh analyzes cyber attacks and the threat actors that conduct them. When not behind the keyboard, he can be found on the Jiu-Jitsu mats, in the gym, or outside with his family.
-                </p>
+        <section id="about-me">
+            <h2>About</h2>
+            <div class="about-grid">
+                <img src="https://avatars.githubusercontent.com/u/12271211?s=400&u=1271da16b110bcf7b4ecaeba66fc5ae91a38942f&v=4" alt="Josh Stepp" class="profile-img">
+                <div class="description">
+                    <h3>I'm a blue-teamer at heart who likes to build things.</h3>
+                    <p>Josh Stepp is a cybersecurity professional with over a decade of experience in threat hunting, detection engineering, and system architecture. A proud veteran of the United States Air Force, where he served as a Cyberwarfare Operator.</p>
+                     <p>These days Josh Stepp is a Regional Services Director at Elastic for the US PUBSEC Team where he helps some of the most important organizations in the world execute their mission, secure critical infrastructure and win using Elastic.</p>
+                    <p>As the creator of the IntrusionsInDepth Podcast, Josh analyzes cyber attacks and the threat actors that conduct them. When not behind the keyboard, he can be found on the Jiu-Jitsu mats, in the gym, or outside with his family.</p>
+                </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <section id="blog">
-        <div class="container">
+        <section id="blog">
             <h2>Blog</h2>
-            <p>
-                My thoughts and observations are shared on Substack. I write about everything from projects I am working on, random thoughts, Jiu-Jitsu and other musings.
-            </p>
-        
-            <p><a href="https://joshstepp.substack.com/" target="_blank">Visit the newsletter | Join the community </a></p>
-        </div>
-    </section>
+            <p>My thoughts and observations are shared on Substack. I write about projects I'm working on, random thoughts, Jiu-Jitsu, and other musings.</p>
+            <ul class="link-list">
+                <li><a href="https://joshstepp.substack.com/" target="_blank">Visit the blog</a></li>
+            </ul>
+        </section>
 
-    <section id="podcast">
-        <div class="container">
+        <section id="podcast">
             <h2>Podcast</h2>
-            <p>
-                Creator of the IntrusionsIndepth Podcast. I analyze cyber attacks and the threat actors that conduct them. If you enjoy an analysis of technical details, as well as geo-politics, history, some conspiracy theories, and terrible jokes, you should give it a listen.
-            </p>
-            <p><a href="https://www.intrusionsindepth.com/" target="_blank">Official Website</a></p>
-            <p><a href="https://www.youtube.com/@IntrusionsInDepth" target="_blank">YouTube Channel</a></p>
- <p><a href="https://podcasts.apple.com/us/podcast/intrusionsindepth-podcast/id1746350584" target="_blank">Apple Podcasts</a></p>
- <p><a href="https://open.spotify.com/show/4JHrf88VKHnmgg4eaPJdZu" target="_blank">Spotify</a></p>
- <a href="https://x.com/intrusionNdepth" target="_blank">Official X page</a>
-            </div>
-    </section>
+            <p>Creator of the IntrusionsInDepth Podcast. I analyze cyber attacks and the threat actors that conduct them. If you enjoy technical detail alongside geo-politics, history, some conspiracy theories, and terrible jokes, you should give it a listen.</p>
+            <ul class="link-list">
+                <li><a href="https://www.intrusionsindepth.com/" target="_blank">Website</a></li>
+                <li><a href="https://www.youtube.com/@IntrusionsInDepth" target="_blank">YouTube</a></li>
+                <li><a href="https://podcasts.apple.com/us/podcast/intrusionsindepth-podcast/id1746350584" target="_blank">Apple Podcasts</a></li>
+                <li><a href="https://open.spotify.com/show/4JHrf88VKHnmgg4eaPJdZu" target="_blank">Spotify</a></li>
+                <li><a href="https://x.com/intrusionNdepth" target="_blank">X</a></li>
+            </ul>
+        </section>
 
-    <section id="Career Advice">
-        <div class="container">
+        <section id="career-advice">
             <h2>Career Advice</h2>
-            <p>
-                I often get asked how do I get into Tech, or Cybersecurity or something along those lines. However, everyone's journey is different. Sometimes it is a yellow brick road, but most of the times it is Groundhog's day of the final stage of Ninja Warrior. Each day you get a little further. My friends at the Code and Culture Dispatch have captured my advice and the advice of others who are more talented. 
-            </p>
-        
-            <p><a href="https://www.codeculturecollective.io/joshs-top-5-career-hacks-you-need-right-now/" target="_blank">Read My Career Advice </a></p>
-        </div>
-    </section>
+            <p>I often get asked how to get into tech or cybersecurity. Everyone's journey is different. Sometimes it's a yellow brick road, but most of the time it's Groundhog Day on the final stage of Ninja Warrior. Each day you get a little further. My friends at the Code and Culture Dispatch have captured my advice and the advice of others who are way more talented than myself.</p>
+            <ul class="link-list">
+                <li><a href="https://www.codeculturecollective.io/joshs-top-5-career-hacks-you-need-right-now/" target="_blank">Read the advice</a></li>
+            </ul>
+        </section>
 
-    <section id="connect">
-        <div class="container">
+        <section id="now">
+            <h2>Now</h2>
+            <p class="now-meta">Updated April 19, 2026</p>
+            <p>Inspired by <a href="https://sive.rs/now" target="_blank">Derek Sivers' /now page</a> &mdash; a snapshot of what I'm focused on right now.</p>
+            <ul class="now-list">
+                <li>Working on a fiction project that I'm not ready to share publicly.</li>
+                <li>Building a podcast episode around Anthropic's Mythos.</li>
+            </ul>
+        </section>
+
+        <section id="connect">
             <h2>Connect</h2>
-            <p>All of my social media is listed here. If you want to get in contact with me, fill out the form under "Collaborate"</p>
+            <p>All my social media is below. To get in contact, fill out the form under "Collaborate."</p>
             <ul class="social-links">
-                <li><a href="https://x.com/_joshstepp_" target="_blank">X (Twitter)</a></li>
+                <li><a href="https://x.com/_joshstepp_" target="_blank">X</a></li>
                 <li><a href="https://www.linkedin.com/in/joshstepp404/" target="_blank">LinkedIn</a></li>
                 <li><a href="https://github.com/joshstepp" target="_blank">GitHub</a></li>
-              <li><a href="https://forms.gle/XTYYvRiS6KDXfDdk7" target="_blank">Collaborate</a></li>
-                </ul>
-        </div>
-    </section>
+                <li><a href="https://forms.gle/XTYYvRiS6KDXfDdk7" target="_blank">Collaborate</a></li>
+            </ul>
+        </section>
 
-    <section id="website">
-        <div class="container">
-            <h2>A note about this website design</h2>
-            <p>I believe much of the internet is bloated, filled with ads and overly complex. I like simple. </p>
-        </div>
-    </section>
+        <section id="website">
+            <h2>On this site</h2>
+            <p>Much of the internet is bloated, filled with ads, and overly complex. I like simple.</p>
+        </section>
 
-    <footer>
-        <div class="container">
-            <p>&copy; 2025 Josh Stepp</p>
-        </div>
-    </footer>
+        <footer>
+            <p>&copy; 2026 Josh Stepp</p>
+        </footer>
+
+    </div>
 
 </body>
 </html>
